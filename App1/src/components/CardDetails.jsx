@@ -7,7 +7,7 @@ const CardDetails = (props) => {
     return (
       <div className="card-details">
         <img src={image} alt={name} />
-        <div className="price">Items at 200 Rs.</div>
+        <div className="price">Items at ${rating * 100} Rs.</div>
         <div className="item-title">{name}</div>
         <div>Coisine: {cuisine}</div>
         <div>Ratings: {rating}</div>

@@ -24,7 +24,7 @@ module.exports = {
       name: "ToDoApp",
       filename: "remoteEntry.js",
       exposes: {
-        "./TodoApp": "/src/TodoApp.jsx"
+        "./TodoApp": "./src/TodoApp.jsx"
       },
       shared:["react", "react-dom"]
     }),
