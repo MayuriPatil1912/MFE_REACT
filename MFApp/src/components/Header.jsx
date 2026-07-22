@@ -1,10 +1,31 @@
-import React from "react";
+import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 
 const Header = (props) => {
+  console.log(props.cart);
+  const [showCart, setShowCart] = useState(false);
+
+  const clickHandler = () => {
+    setShowCart(!showCart);
+  };
   return (
     <>
-     <span className="cart">{props.cart.length}</span>
+      <span className="cart" onClick={clickHandler}>
+        🛒 ({props.cart.length})
+      </span>
+      <div>
+        {showCart && (
+          <ul className="cart-items">
+            {props.cart.map((cartItem) => {
+              return (
+                <li key={cartItem.id}>
+                  {cartItem.name} ({cartItem.quantity})
+                </li>
+              );
+            })}
+          </ul>
+        )}
+      </div>
       <div className="header">Microfrontend Host Application</div>
 
       <ul className="nav">

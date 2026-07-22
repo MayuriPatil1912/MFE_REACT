@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./TodoApp.css";
 
-const TodoApp = ({ title }) => {
+const TodoApp = ({ title, cart }) => {
   const [itemsList, setItemsList] = useState([]);
 
   const addTodo = (item) => {
@@ -25,6 +25,16 @@ const TodoApp = ({ title }) => {
       </div>
       <TodoForm addTodo={addTodo} />
       <TodoList itemsList={itemsList} deleteTodo={deleteTodo} />
+
+      <ul >
+        {cart.map((cartItem) => {
+          return (
+            <li key={cartItem.id}>
+              {cartItem.name} ({cartItem.quantity})
+            </li>
+          );
+        })}
+      </ul>
     </div>
   );
 };

@@ -10,9 +10,10 @@ import NotFound from "./components/NotFound.jsx";
 const App = () => {
   const [cartItems, setCartItems] = useState([])
   const callbackParent = (cartDetails) => {
-    console.log(cartDetails);
+    // console.log(cartDetails);
     const cart = [...cartItems, cartDetails]
     setCartItems(cart)
+    // console.log(cart)
   };
   const router = createBrowserRouter([
     {
@@ -30,7 +31,7 @@ const App = () => {
         },
         {
           path: "/productlist",
-          element: <ProductList />,
+          element: <ProductList cart={cartItems}/>,
         },
       ],
     },
