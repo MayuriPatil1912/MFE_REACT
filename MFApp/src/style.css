@@ -18,3 +18,17 @@
 .short-list-container, .detail-list-container, .todo-list-container {
     padding: 20px;
 }
+
+.nav li {
+    list-style-type: none;
+    display: inline-block;
+    width: 100px;
+    border: 1px solid black;
+    text-align: center;
+    padding: 5px;
+
+}
+
+.active {
+    color: green;
+}
