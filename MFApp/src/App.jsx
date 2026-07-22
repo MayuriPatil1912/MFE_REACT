@@ -8,19 +8,25 @@ import Layout from "./components/Layout.jsx";
 import NotFound from "./components/NotFound.jsx";
 
 const App = () => {
+  const [cartItems, setCartItems] = useState([])
+  const callbackParent = (cartDetails) => {
+    console.log(cartDetails);
+    const cart = [...cartItems, cartDetails]
+    setCartItems(cart)
+  };
   const router = createBrowserRouter([
     {
       path: "/",
-      element: <Layout />,
-      errorElement:<NotFound />,
+      element: <Layout cart={cartItems}/>,
+      errorElement: <NotFound />,
       children: [
         {
           path: "/",
-          element: <FoodList />,
+          element: <FoodList callback={callbackParent} />,
         },
         {
           path: "/foodlist",
-          element: <FoodList />,
+          element: <FoodList callback={callbackParent}/>,
         },
         {
           path: "/productlist",

@@ -4,6 +4,10 @@ import "./CardDetails.css";
 const CardDetails = (props) => {
     const {image, name, cuisine, rating } = props.data;
 
+    const handleClick = () =>{
+      props.callback(props.data)
+    }
+
     return (
       <div className="card-details">
         <img src={image} alt={name} />
@@ -11,6 +15,7 @@ const CardDetails = (props) => {
         <div className="item-title">{name}</div>
         <div>Coisine: {cuisine}</div>
         <div>Ratings: {rating}</div>
+        <button onClick={handleClick} className="add-button">Add</button>
       </div>
     );
   }

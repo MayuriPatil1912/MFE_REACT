@@ -2,9 +2,13 @@ import React, { useState, useEffect, lazy, Suspense } from "react";
 const CardDeatils = lazy(() => import("DetailCardInHost/CardDetails"));
 const CardShort = lazy(() => import("ShortCardInHost/CardShort"));
 
-const FoodList = () => {
+const FoodList = (props) => {
   const [detailItems, setDetailItems] = useState([]);
   const [shortItems, setShortItems] = useState([]);
+
+  const callbackParent = (result) => {
+    props.callback(result);
+  };
 
   useEffect(() => {
     fetch(
@@ -22,19 +26,25 @@ const FoodList = () => {
 
   return (
     <>
+      <div className="detail-list-container">
+        <Suspense fallback={<p>Loading...</p>}>
+          {detailItems.length &&
+            detailItems.map((item) => {
+              return (
+                <CardDeatils
+                  key={item.id}
+                  data={item}
+                  callback={callbackParent}
+                ></CardDeatils>
+              );
+            })}
+        </Suspense>
+      </div>
       <div className="short-list-container">
         <Suspense fallback={<p>Loading...</p>}>
           {shortItems.length &&
             shortItems.map((item) => {
               return <CardShort key={item.id} data={item}></CardShort>;
-            })}
-        </Suspense>
-      </div>
-      <div className="detail-list-container">
-        <Suspense fallback={<p>Loading...</p>}>
-          {detailItems.length &&
-            detailItems.map((item) => {
-              return <CardDeatils key={item.id} data={item}></CardDeatils>;
             })}
         </Suspense>
       </div>

@@ -1,9 +1,10 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 
-const Header = () => {
+const Header = (props) => {
   return (
     <>
+     <span className="cart">{props.cart.length}</span>
       <div className="header">Microfrontend Host Application</div>
 
       <ul className="nav">
