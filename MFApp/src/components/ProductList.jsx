@@ -5,7 +5,7 @@ const ProductList = () => {
     return (
         <div className="todo-list-container">
             <Suspense fallback={null}>
-            <TodoApp />
+            <TodoApp title="Products List"/>
             </Suspense>
         </div>
     )

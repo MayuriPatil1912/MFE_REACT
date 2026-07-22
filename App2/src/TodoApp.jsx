@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./TodoApp.css";
 
-const TodoApp = () => {
+const TodoApp = ({ title }) => {
   const [itemsList, setItemsList] = useState([]);
 
   const addTodo = (item) => {
@@ -14,14 +14,14 @@ const TodoApp = () => {
     let deleteItemIndex = itemsList.indexOf(item);
     setItemsList([
       ...itemsList.slice(0, deleteItemIndex),
-      ...itemsList.slice(deleteItemIndex + 1)
+      ...itemsList.slice(deleteItemIndex + 1),
     ]);
   };
 
   return (
     <div className="app">
       <div className="header">
-        <h2>Product List</h2>
+        <h2>{title}</h2>
       </div>
       <TodoForm addTodo={addTodo} />
       <TodoList itemsList={itemsList} deleteTodo={deleteTodo} />
