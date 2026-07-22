@@ -5,12 +5,14 @@ import ProductList from "./components/ProductList.jsx";
 
 import "./style.css";
 import Layout from "./components/Layout.jsx";
+import NotFound from "./components/NotFound.jsx";
 
 const App = () => {
   const router = createBrowserRouter([
     {
       path: "/",
       element: <Layout />,
+      errorElement:<NotFound />,
       children: [
         {
           path: "/",
